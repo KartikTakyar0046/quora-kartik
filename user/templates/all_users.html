@@ -1,0 +1,32 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    img {
+    max-width: 100px;
+    max-height: 150px;
+    }
+    body{
+background-color:#222;
+
+		}
+		.card-body{
+		background-color:#222;
+		}
+
+</style>
+<body>
+    {%for user in users%}
+    <div class="card card-body">
+    <li class="collection-item avatar">
+        <div class="w3-container">
+            <img  class="profile-pic" src="{{user.profile.profile_pic.url}}" alt="Image Not Supported">
+            <span class="title"><a href="{% url 'profile-visit' user.username%}" >{{user.username}}</a></span>
+        </div>
+    </li>
+        <br>
+    </div>
+
+{% endfor %}
+</body>
+{% endblock%}

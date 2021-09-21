@@ -1,0 +1,44 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<style>
+body{
+background-color:#222;
+color:white;
+		}
+.card-body{
+background-color:  #3e3b3f   ;
+}
+
+/* visited link */
+/*a:visited {
+  color: white ;
+}*/
+
+/* mouse over link */
+a:hover {
+  color:  #3498db ;
+}
+
+/* selected link */
+a:active {
+  color: white;
+}
+</style>
+<body>
+{%for ques in questions %}
+
+<div class="card text-white bg-success mb-3" style="max-width: 80rem">
+  <div class="card-body">
+    <h5 class="card-title">  <a href="{% url 'question-detail' ques.slug %}"><h3 class="flow-text">{{ques.body}}</h3></a></h5>
+      <p>By:- <a href="{%url 'profile-visit' ques.author.username%}"> {{ques.author}}</a> </p>
+    <p>{{ques.published_date}}</p>
+  </div>
+</div>
+</body>
+{% endfor %}
+
+{% endblock %}
